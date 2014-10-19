@@ -20,7 +20,7 @@ public class Demonstration {
 		Point tri=new Point(500,150);
 		Point cetiri=new Point(700,200);
 		Point pet= new Point(200,400);
-		Point sest= new Point(350,400);
+		Point sest= new Point(250,200);
 		Rectangle rectangle1 = new Rectangle(100, 150, jedan);
 		Rectangle rectangle2= new Rectangle(150,100,dva);
 		Line line1 = new Line(tri, cetiri);
