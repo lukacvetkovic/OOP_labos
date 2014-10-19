@@ -12,21 +12,21 @@ import hr.fer.oop.lab1.topic2.pic.PictureDisplay;
 public class Demonstration {
 
 	public static void main(String[] args) {
-		Picture slika = new Picture(1000, 500);
+		Picture slika = new Picture(100, 50);
 		
 		
-		Point jedan = new Point(50,150);
-		Point dva = new Point(400, 300);
-		Point tri=new Point(500,150);
-		Point cetiri=new Point(700,200);
-		Point pet= new Point(200,400);
-		Point sest= new Point(250,200);
-		Rectangle rectangle1 = new Rectangle(100, 150, jedan);
-		Rectangle rectangle2= new Rectangle(150,100,dva);
+		Point jedan = new Point(5,15);
+		Point dva = new Point(40, 30);
+		Point tri=new Point(50,15);
+		Point cetiri=new Point(70,20);
+		Point pet= new Point(20,40);
+		Point sest= new Point(25,20);
+		Rectangle rectangle1 = new Rectangle(10, 15, jedan);
+		Rectangle rectangle2= new Rectangle(15,10,dva);
 		Line line1 = new Line(tri, cetiri);
 		Line line2 = new Line(dva, tri);		
-		Circle krug1 = new Circle(75, pet);
-		Circle krug2= new Circle(50,sest);
+		Circle krug1 = new Circle(7, pet);
+		Circle krug2= new Circle(5,sest);
 		
 		
 		PictureDisplay display = new PictureDisplay();
@@ -36,7 +36,7 @@ public class Demonstration {
 		rectangle2.drawOnPicture(slika);
 		line2.drawOnPicture(slika);
 		krug2.drawOnPicture(slika);
-		display.showPicture(slika);
+		slika.renderImageToStream(System.out);
 	}
 
 }
