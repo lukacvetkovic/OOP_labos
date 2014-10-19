@@ -3,43 +3,33 @@ package hr.fer.oop.lab1.topic2.prob1;
 import hr.fer.oop.lab1.topic2.pic.Picture;
 
 public class Rectangle {
-	
-	public double width,height;
-	Point gornjiLijevi;
-	Point gornjiDesni;
-	
-	
-	
-	
-	public Rectangle(double width, double height, Point gornjiLijevi,
-			Point gornjiDesni) {
+
+	public double width, height;
+	public Point gornjiLijevi;
+
+	public Rectangle(double width, double height, Point gornjiLijevi) {
 		super();
 		this.width = width;
 		this.height = height;
 		this.gornjiLijevi = gornjiLijevi;
-		this.gornjiDesni = gornjiDesni;
+
 	}
-	
+
 	public Rectangle(Rectangle rectangle) {
 		super();
 		this.width = rectangle.width;
 		this.height = rectangle.height;
 		this.gornjiLijevi = rectangle.gornjiLijevi;
-		this.gornjiDesni = rectangle.gornjiDesni;
-		
-	}
-	
-	
 
-	public void drawOnPicture(Picture slika){
-		slika.turnPixelOn(gornjiLijevi.x, gornjiDesni.y);
-		Point pom=new Point(gornjiLijevi.x,(int) (gornjiLijevi.y+height));
-		slika.turnPixelOn(pom.x,pom.y);
-		
-		slika.turnPixelOn(gornjiDesni.x,gornjiDesni.y );
-		Point novi=new Point(gornjiDesni.x,(int) (gornjiDesni.y+height));
-		slika.turnPixelOn(novi.x,(int) (novi.y+height*2) );
-		
+	}
+
+	public void drawOnPicture(Picture slika) {
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				slika.turnPixelOn(gornjiLijevi.x + i, gornjiLijevi.y + j);
+			}
+		}
+
 	}
 
 	public double getWidth() {
@@ -57,7 +47,5 @@ public class Rectangle {
 	public void setHeight(double height) {
 		this.height = height;
 	}
-	
-	
 
 }
