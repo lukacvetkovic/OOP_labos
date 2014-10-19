@@ -2,6 +2,13 @@ package hr.fer.oop.lab1.topic2.prob1;
 
 import hr.fer.oop.lab1.topic2.pic.Picture;
 
+/**
+ * Klasa Line stvara objekt tipa line (crta) sa zadanim parametrima. Pomocu
+ * metode drawOnPicture na sliku crta taj objekt
+ * 
+ * @author Cveki
+ *
+ */
 public class Line {
 	public float duljina;
 	public Point pocetak, kraj;
@@ -10,8 +17,9 @@ public class Line {
 		super();
 		this.pocetak = pocetak;
 		this.kraj = kraj;
-		this.duljina=(float) Math.sqrt((kraj.x-pocetak.x)^2+(kraj.y-pocetak.y)^2);
-		
+		this.duljina = (float) Math.sqrt((kraj.x - pocetak.x) ^ 2
+				+ (kraj.y - pocetak.y) ^ 2);
+
 	}
 
 	public Line(float duljina, Point pocetak) {
@@ -30,12 +38,15 @@ public class Line {
 
 	public void drawOnPicture(Picture slika) {
 		if (kraj == null) {
-			Point pomocni=new Point((int) (pocetak.x+duljina),pocetak.y);
+			Point pomocni = new Point((int) (pocetak.x + duljina), pocetak.y);
 			setKraj(pomocni);
 		}
-		float komadicVisine=(float) Math.sqrt(((duljina/(kraj.x-pocetak.x))*(duljina/(kraj.x-pocetak.x)))-1);
-		for (int i = pocetak.x; i < kraj.x; i++) {
-			slika.turnPixelOn(i, (int) (komadicVisine+i));
+
+		int dx = kraj.x - pocetak.x;
+		int dy = kraj.y - pocetak.y;
+		for (int j = pocetak.x; j <= kraj.x; j++) {
+			float y = pocetak.y + dy * (j - pocetak.x) / dx;
+			slika.turnPixelOn(j, (int) y);
 		}
 
 	}

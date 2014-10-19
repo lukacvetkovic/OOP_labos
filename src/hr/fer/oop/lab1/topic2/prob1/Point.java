@@ -1,5 +1,11 @@
 package hr.fer.oop.lab1.topic2.prob1;
 
+/**
+ * Stavara toèku s x i y koortinatama
+ * 
+ * @author proffesor
+ *
+ */
 public class Point {
 	public int x;
 	public int y;

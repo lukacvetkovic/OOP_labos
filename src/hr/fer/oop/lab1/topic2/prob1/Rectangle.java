@@ -2,6 +2,13 @@ package hr.fer.oop.lab1.topic2.prob1;
 
 import hr.fer.oop.lab1.topic2.pic.Picture;
 
+/**
+ * Klasa Rectangle stvara objekt tipa rectangle (pravokutnik) sa zadanim
+ * parametrima. Pomocu metode drawOnPicture na sliku crta taj objekt
+ * 
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class Rectangle {
 
 	public double width, height;

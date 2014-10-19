@@ -59,6 +59,10 @@ public class Roots {
 				System.out.println(i + 1 + ")" + Math.round(drugi) + "i");
 			} else if (drugi == 0 && Math.round(prvi) != 0) {
 				System.out.println(i + ")" + prvi);
+			} else if (drugi < 0) {
+				System.out.println(i + 1 + ")" + Math.round(prvi)
+						+ Math.round(drugi) + "i");
+
 			} else {
 				System.out.println(i + 1 + ")" + Math.round(prvi) + "+"
 						+ Math.round(drugi) + "i");
