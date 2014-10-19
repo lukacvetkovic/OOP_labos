@@ -6,7 +6,7 @@ import hr.fer.oop.lab1.topic2.pic.PictureDisplay;
 /**
  * Klasa s mainom u kojem provjeravamo da objekti rade zadane akcije
  * 
- * @author Cveki
+ * @author Luka Cvetkoviæ
  *
  */
 public class Demonstration {

@@ -6,7 +6,7 @@ import hr.fer.oop.lab1.topic2.pic.Picture;
  * Klasa Line stvara objekt tipa line (crta) sa zadanim parametrima. Pomocu
  * metode drawOnPicture na sliku crta taj objekt
  * 
- * @author Cveki
+ * @author Luka Cvetkoviæ
  *
  */
 public class Line {
