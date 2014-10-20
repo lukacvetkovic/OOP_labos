@@ -29,7 +29,10 @@ public class Rectangle {
 		this.gornjiLijevi = rectangle.gornjiLijevi;
 
 	}
-
+	/**
+	 * Crta sliku objekta Rectangle
+	 * @param slika
+	 */
 	public void drawOnPicture(Picture slika) {
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {

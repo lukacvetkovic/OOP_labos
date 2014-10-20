@@ -24,7 +24,10 @@ public class Circle {
 
 		this(circle.radius, circle.centre);
 	}
-
+	/**
+	 * Crta sliku objekta Circle
+	 * @param slika
+	 */
 	public void drawOnPicture(Picture slika) {
 
 		for (int i = (int) (centre.x - radius); i <= (int) centre.x + radius; i++) {

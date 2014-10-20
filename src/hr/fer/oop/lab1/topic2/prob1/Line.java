@@ -36,6 +36,10 @@ public class Line {
 		this.kraj = line.kraj;
 	}
 
+	/**
+	 * Crta sliku objekta Line
+	 * @param slika
+	 */
 	public void drawOnPicture(Picture slika) {
 		if (kraj == null) {
 			Point pomocni = new Point((int) (pocetak.x + duljina), pocetak.y);
