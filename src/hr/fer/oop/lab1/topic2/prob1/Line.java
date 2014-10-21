@@ -4,7 +4,7 @@ import hr.fer.oop.lab1.topic2.pic.Picture;
 
 /**
  * Klasa Line stvara objekt tipa line (crta) sa zadanim parametrima. Pomocu
- * metode drawOnPicture na sliku crta taj objekt
+ * metode drawOnPicture na sliku crta taj objekt.
  * 
  * @author Luka Cvetkoviæ
  *
@@ -38,18 +38,22 @@ public class Line {
 
 	/**
 	 * Crta sliku objekta Line
-	 * @param slika
+	 * @param slika na koju crta.
 	 */
 	public void drawOnPicture(Picture slika) {
 		if (kraj == null) {
 			Point pomocni = new Point((int) (pocetak.x + duljina), pocetak.y);
 			setKraj(pomocni);
 		}
+		
 
 		int dx = kraj.x - pocetak.x;
 		int dy = kraj.y - pocetak.y;
 		for (int j = pocetak.x; j <= kraj.x; j++) {
 			float y = pocetak.y + dy * (j - pocetak.x) / dx;
+			if(slika.getHeight()<y && slika.getWidth()<j){
+				slika.turnPixelOn(j, (int) y);
+			}
 			slika.turnPixelOn(j, (int) y);
 		}
 

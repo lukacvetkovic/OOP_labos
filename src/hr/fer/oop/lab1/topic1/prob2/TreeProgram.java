@@ -2,7 +2,7 @@ package hr.fer.oop.lab1.topic1.prob2;
 
 /**
  * Klasa TreeProgram simulira rad stabla. Sadrži metode
- * main,containsData,sizeOfTree,insert,writeTree
+ * main,containsData,sizeOfTree,insert,writeTree.
  * 
  * @author Luka Cvetkoviæ
  *
@@ -16,7 +16,7 @@ class TreeProgram {
 
 	/**
 	 * Pomocu main metode u stablo stavljamo nove elemente te raznim metodama
-	 * ispisujemo i okrecemo
+	 * ispisujemo i okrecemo.
 	 * 
 	 * @param args
 	 *            (ne koristi se)
@@ -41,13 +41,13 @@ class TreeProgram {
 	}
 
 	/**
-	 * Metoda containsData provjerava da li postoji u stablu odredeni string
+	 * Metoda containsData provjerava da li postoji u stablu odredeni string.
 	 * 
 	 * @param treeRoot
-	 *            referenca na stablo u kojem trazimo
+	 *            referenca na stablo u kojem trazimo.
 	 * @param data
-	 *            string koji trazimo u stablu
-	 * @return boolean vrijednost koji ako je naden je true, ako nije je false
+	 *            string koji trazimo u stablu.
+	 * @return boolean vrijednost koji ako je naden je true, ako nije je false.
 	 */
 	static boolean containsData(TreeNode treeRoot, String data) {
 		boolean found;
@@ -87,13 +87,13 @@ class TreeProgram {
 
 	/**
 	 * Metoda insert upisuje u postojece stablo nove elemente Stablo nakon upisa
-	 * je sortirano
+	 * je sortirano.
 	 * 
 	 * @param treeRoot
-	 *            referenca na stablo u koje dodajemo
+	 *            referenca na stablo u koje dodajemo.
 	 * @param data
-	 *            string(data) novog elementa
-	 * @return referencu na pocetak stabla
+	 *            string(data) novog elementa.
+	 * @return referencu na pocetak stabla.
 	 */
 	static TreeNode insert(TreeNode treeRoot, String data) {
 		TreeNode node = new TreeNode();

@@ -4,7 +4,7 @@ import hr.fer.oop.lab1.topic2.pic.Picture;
 
 /**
  * Klasa Rectangle stvara objekt tipa rectangle (pravokutnik) sa zadanim
- * parametrima. Pomocu metode drawOnPicture na sliku crta taj objekt
+ * parametrima. Pomocu metode drawOnPicture na sliku crta taj objekt.
  * 
  * @author Luka Cvetkoviæ
  *
@@ -29,14 +29,23 @@ public class Rectangle {
 		this.gornjiLijevi = rectangle.gornjiLijevi;
 
 	}
+
 	/**
-	 * Crta sliku objekta Rectangle
+	 * Crta sliku objekta Rectangle.
+	 * 
 	 * @param slika
+	 *            na koju crta.
 	 */
 	public void drawOnPicture(Picture slika) {
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
+				/*
+				 * if(slika.getWidth()<gornjiLijevi.x + i &&
+				 * slika.getHeight()<gornjiLijevi.y + j){
+				 * slika.turnPixelOn(gornjiLijevi.x + i, gornjiLijevi.y + j); }
+				 */
 				slika.turnPixelOn(gornjiLijevi.x + i, gornjiLijevi.y + j);
+
 			}
 		}
 

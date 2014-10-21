@@ -4,7 +4,7 @@ import hr.fer.oop.lab1.topic2.pic.Picture;
 
 /**
  * Klasa Circle stvara objekt tipa circle (krug) sa zadanim parametrima. Pomocu
- * metode drawOnPicture na sliku crta taj objekt
+ * metode drawOnPicture na sliku crta taj objekt.
  * 
  * @author Luka Cvetkoviæ
  *
@@ -25,7 +25,7 @@ public class Circle {
 		this(circle.radius, circle.centre);
 	}
 	/**
-	 * Crta sliku objekta Circle
+	 * Crta sliku objekta Circle.
 	 * @param slika
 	 */
 	public void drawOnPicture(Picture slika) {

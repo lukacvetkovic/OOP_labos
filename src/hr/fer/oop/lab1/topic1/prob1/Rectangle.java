@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 /**
  * Klasa Rectangle sa main metodom koja sadrzi visinu(width) i sirinu(height).
- * Uèitava parametre dok nisu odgovarajuci (veci od 0). Racuna opseg i povrsinu
+ * Ucitava parametre dok nisu odgovarajuci (veci od 0). Racuna opseg i povrsinu
  * pravokutika. Sadrži metodu inputOfParameters s pomocu kojih ucitava podatke.
  * 
  * @author Luka Cvetkoviæ
@@ -15,12 +15,12 @@ import java.io.InputStreamReader;
 public class Rectangle {
 
 	/**
-	 * main metoda racuna opseg i povrsinu pravokutnika
+	 * Main metoda racuna opseg i povrsinu pravokutnika.
 	 * 
 	 * @param args
-	 *            koristimo za unos podataka
+	 *            koristimo za unos podataka.
 	 * @throws IOException
-	 *             kod unosa podataka
+	 *             kod unosa podataka.
 	 */
 	public static void main(String[] args) throws IOException {
 
@@ -31,8 +31,8 @@ public class Rectangle {
 			width = Integer.valueOf(args[0]);
 			height = Integer.valueOf(args[1]);
 		}
-		
-		else{
+
+		else {
 			System.out.println("Nothing was given");
 			width = inputOfParameters(true);
 			height = inputOfParameters(false);
@@ -62,7 +62,7 @@ public class Rectangle {
 	 * True za sirinu false za visinu.
 	 * 
 	 * @param choosing
-	 *            za true ucitavamo width a za false height
+	 *            za true ucitavamo width a za false height.
 	 * @return value of height/width
 	 * @throws IOException
 	 *             kod citanja podataka

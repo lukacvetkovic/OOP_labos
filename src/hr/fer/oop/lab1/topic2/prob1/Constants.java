@@ -1,6 +1,6 @@
 package hr.fer.oop.lab1.topic2.prob1;
 /**
- * Klasa sa konstantama
+ * Klasa sa konstantama.
  * @author Luka Cvetkoviæ
  *
  */

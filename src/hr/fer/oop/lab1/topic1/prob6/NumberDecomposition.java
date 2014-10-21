@@ -13,8 +13,8 @@ public class NumberDecomposition {
 	 * upisuje broj Broj mora biti veci od 0.
 	 * 
 	 * @param args
-	 *            olje od jednog clana koji je parametar koji je broj kojeg
-	 *            rastavljamo na faktore
+	 *            Polje od jednog clana koji je parametar koji je broj kojeg
+	 *            rastavljamo na faktore.
 	 */
 	public static void main(String[] args) {
 

@@ -3,7 +3,7 @@ package hr.fer.oop.lab1.topic2.prob1;
 import java.util.Random;
 
 /**
- * Klasa Path radi put toèaka
+ * Klasa Path radi put toèaka.
  * 
  * @author professor
  *

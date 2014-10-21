@@ -11,11 +11,11 @@ public class PrimeNumbers {
 	/**
 	 * Main metoda racuna proste brojeve i ispisuje ih. Preko parametra number
 	 * odreduje se koliki broj prostih brojeva se ispisuje. Parametar number
-	 * mora biti veci od 0
+	 * mora biti veci od 0.
 	 * 
 	 * @param args
 	 *            polje od jednog clana koji je parametar koji govori koliki
-	 *            broj prostih brojeva ispisujemo, mora biti veci od 0
+	 *            broj prostih brojeva ispisujemo, mora biti veci od 0.
 	 */
 	public static void main(String[] args) {
 
