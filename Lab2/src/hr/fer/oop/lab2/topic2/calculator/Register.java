@@ -7,6 +7,9 @@ package hr.fer.oop.lab2.topic2.calculator;
  *
  */
 public class Register {
+	/**
+	 * Value of the register.
+	 */
 	private Object value;
 
 	/**

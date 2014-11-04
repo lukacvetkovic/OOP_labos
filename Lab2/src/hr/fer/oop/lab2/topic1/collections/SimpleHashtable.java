@@ -13,6 +13,9 @@ public class SimpleHashtable {
 
 	public int size;
 	public TableEntry[] table;
+	/**
+	 * Int value of the table lenght.
+	 */
 	private int tableLenght;
 
 	/**

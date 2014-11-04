@@ -8,9 +8,17 @@ package hr.fer.oop.lab2.topic1.collections;
  *
  */
 public class TableEntry {
-
+	/**
+	 * Value of the key object.
+	 */
 	private Object key;
+	/**
+	 * Value of the value object.
+	 */
 	private Object value;
+	/**
+	 * Reference to next object of TableEntry.
+	 */
 	private TableEntry next;
 
 	/**

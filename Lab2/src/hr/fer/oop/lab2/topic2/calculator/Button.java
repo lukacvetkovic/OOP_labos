@@ -8,6 +8,9 @@ package hr.fer.oop.lab2.topic2.calculator;
  */
 
 public class Button {
+	/**
+	 * Name of the button.
+	 */
 	private String buttonName;
 
 	/**

@@ -9,10 +9,18 @@ package hr.fer.oop.lab2.topic2.calculator;
  *
  */
 public class SimpleCalc implements ICalculator {
-
-	Register display = new Register();
-	Register memory = new Register();
-	Register operator = new Register();
+	/**
+	 * Register for holding the display value.
+	 */
+	private Register display = new Register();
+	/**
+	 * Register for holding the memory value.
+	 */
+	private Register memory = new Register();
+	/**
+	 * Register for holding the object value.
+	 */
+	private Register operator = new Register();
 
 	/**
 	 * Constructor that makes instance of SimpleCalc and sets registers values
