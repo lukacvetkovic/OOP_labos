@@ -1,7 +1,18 @@
 package hr.fer.oop.lab2.topic2.calculator;
 
+/**
+ * Class where program starts testing the other classes.
+ * 
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class Main {
-
+	/**
+	 * Main method where program starts.
+	 * 
+	 * @param args
+	 *            takes parameters from command line (it is not used)
+	 */
 	public static void main(String[] args) {
 		String s;
 		SimpleCalc c = new SimpleCalc();

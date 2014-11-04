@@ -1,11 +1,23 @@
 package hr.fer.oop.lab2.topic2.calculator;
 
+/**
+ * 
+ * Class that simulates the work on calculator, implements interface
+ * ICalculator.
+ * 
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class SimpleCalc implements ICalculator {
 
-	Registar display = new Registar();
-	Registar memory = new Registar();
-	Registar operator = new Registar();
+	Register display = new Register();
+	Register memory = new Register();
+	Register operator = new Register();
 
+	/**
+	 * Constructor that makes instance of SimpleCalc and sets registers values
+	 * do default.
+	 */
 	public SimpleCalc() {
 		super();
 		display.setValue(0);
@@ -38,6 +50,12 @@ public class SimpleCalc implements ICalculator {
 		}
 	}
 
+	/**
+	 * Simulates the pressed digit on calculator.
+	 * 
+	 * @param num
+	 *            is int what digit is pressed.
+	 */
 	public void pressDigit(int num) {
 		if (num > 9 || num < -1) {
 			System.err.println("error");
@@ -54,6 +72,10 @@ public class SimpleCalc implements ICalculator {
 
 	}
 
+	/**
+	 * Helper method that runs when we press the operation button and the
+	 * register operator is not null.
+	 */
 	private void pressEqualsTemp() {
 		if (operator.getValue() == null) {
 			System.exit(-1);
@@ -79,6 +101,9 @@ public class SimpleCalc implements ICalculator {
 
 	}
 
+	/**
+	 * Simulates the pressed plus(+) on calculator.
+	 */
 	public void pressPlus() {
 		if (operator.getValue() == null) {
 			operator.setValue("+");
@@ -91,6 +116,9 @@ public class SimpleCalc implements ICalculator {
 		}
 	}
 
+	/**
+	 * Simulates the pressed equal(=) on calculator.
+	 */
 	public void pressEquals() {
 		if (operator.getValue() == null) {
 			System.exit(-1);
@@ -116,6 +144,9 @@ public class SimpleCalc implements ICalculator {
 
 	}
 
+	/**
+	 * Simulates the pressed minus(-) on calculator.
+	 */
 	public void pressMinus() {
 		if (operator.getValue() == null) {
 			operator.setValue("-");
@@ -127,12 +158,18 @@ public class SimpleCalc implements ICalculator {
 		}
 	}
 
+	/**
+	 * Resets all the registers values to default.
+	 */
 	public void pressClear() {
 		display.setValue(0);
 		memory.setValue(0);
 		operator.setValue(null);
 	}
 
+	/**
+	 * Makes the string which contains the values of all the registers.
+	 */
 	public String toString() {
 		String s;
 		s = "(";
