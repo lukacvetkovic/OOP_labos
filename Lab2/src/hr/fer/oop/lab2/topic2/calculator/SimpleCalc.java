@@ -26,23 +26,35 @@ public class SimpleCalc implements ICalculator {
 
 	}
 
+	/**
+	 * Returns string value of display as a string.
+	 * 
+	 * @return string value of display.
+	 */
 	@Override
 	public String getDisplay() {
 		return String.valueOf(display.getValue());
 	}
 
+	/**
+	 * Method that checks what button is pressed and by it's value run other
+	 * methods.
+	 * 
+	 * @param b
+	 *            is pressed button.
+	 */
 	@Override
 	public void press(Button b) {
 		if (b instanceof DigitButton) {
-			this.pressDigit(Integer.valueOf(b.buttonName));
+			this.pressDigit(Integer.valueOf(b.getButtonName()));
 		} else if (b instanceof OperatorButton) {
-			if (b.buttonName.equals("+")) {
+			if (b.getButtonName().equals("+")) {
 				this.pressPlus();
 			} else {
 				this.pressMinus();
 			}
 		} else {
-			if (b.buttonName.equals("=")) {
+			if (b.getButtonName().equals("=")) {
 				this.pressEquals();
 			} else {
 				this.pressClear();

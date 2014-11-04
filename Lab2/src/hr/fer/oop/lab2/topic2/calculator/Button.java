@@ -8,16 +8,21 @@ package hr.fer.oop.lab2.topic2.calculator;
  */
 
 public class Button {
-	protected String buttonName;
+	private String buttonName;
 
 	/**
-	 * Protected constructor to make instance of Button. Button can be (=) or (C).
+	 * Protected constructor to make instance of Button. Button can be (=) or
+	 * (C).
 	 * 
 	 * @param string
 	 *            is the name of the button.
 	 */
 	protected Button(String string) {
-		// TODO Auto-generated constructor stub
+		this.buttonName = string;
+	}
+
+	public String getButtonName() {
+		return buttonName;
 	}
 
 	/*

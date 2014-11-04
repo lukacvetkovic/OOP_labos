@@ -17,7 +17,7 @@ public class Main {
 		String s;
 		SimpleCalc c = new SimpleCalc();
 
-		s = c.getDisplay();
+		/*s = c.getDisplay();
 		System.out.println(s);
 		s = c.toString();
 		System.out.println(s);
@@ -71,6 +71,12 @@ public class Main {
 		System.out.println(s);
 
 		c.pressClear();
+		s = c.getDisplay();
+		System.out.println(s);
+		s = c.toString();
+		System.out.println(s);*/
+		
+		c.press(DigitButton.one);
 		s = c.getDisplay();
 		System.out.println(s);
 		s = c.toString();
