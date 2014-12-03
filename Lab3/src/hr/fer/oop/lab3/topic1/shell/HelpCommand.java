@@ -16,7 +16,7 @@ public class HelpCommand extends AbstractCommand{
 		listOfCommands[3]= new TerminalCommand();
 		
 		for(AbstractCommand ab : listOfCommands){
-			System.out.println(ab.getCommandName()+"/t"+ab.getCommandDescription());
+			System.out.println(ab.getCommandName()+"\t"+ab.getCommandDescription());
 		}
 		return CommandStatus.CONTINUE;
 	}

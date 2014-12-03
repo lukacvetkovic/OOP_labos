@@ -120,7 +120,7 @@ public class SimpleHashtable implements Iterable {
 	 * @return value of the object where key is equal to key in parameter.
 	 */
 	public Object get(Object key) {
-		Object pom;
+		Object pom=null;
 		int whereTo = Math.abs((key.hashCode())) % tableLenght;
 
 		if (table[whereTo].getKey().equals(key)) {

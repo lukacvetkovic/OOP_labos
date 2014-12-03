@@ -1,6 +1,7 @@
 package hr.fer.oop.lab3.topic1.shell;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Terminal {
 	private int id;
@@ -9,6 +10,7 @@ public class Terminal {
 	public Terminal(int id) {
 		super();
 		this.id = id;
+		this.currentPath=Paths.get(".");
 	}
 
 	public Path getCurrentPath() {
