@@ -1,5 +1,7 @@
 package hr.fer.oop.lab3.topic1.collections;
 
+import java.util.Iterator;
+
 /**
  * SimpleHashtable makes the object with table of objects which type is
  * TableEntery. Variable size indicates number of the table slots that are full.
@@ -9,7 +11,7 @@ package hr.fer.oop.lab3.topic1.collections;
  * @author Luka Cvetkoviæ
  *
  */
-public class SimpleHashtable {
+public class SimpleHashtable implements Iterable {
 
 	public int size;
 	public TableEntry[] table;
@@ -324,10 +326,10 @@ public class SimpleHashtable {
 		}
 		return s;
 	}
-	
+
 	/**
-	 * Class TableEntry makes the object TableEntery with parameters key,value and
-	 * pointer to next object of TableEntry.
+	 * Class TableEntry makes the object TableEntery with parameters key,value
+	 * and pointer to next object of TableEntry.
 	 * 
 	 * @author Luka Cvetkoviæ
 	 *
@@ -418,6 +420,83 @@ public class SimpleHashtable {
 		}
 	}
 
+	private class MyIterator implements Iterator {
+
+		private TableEntry tableEntry;
+		private int trenutni;
+
+		public MyIterator() {
+			this.tableEntry = null;
+			this.trenutni = 0;
+		}
+
+		@Override
+		public boolean hasNext() {
+			if (tableEntry == null) {
+				for (int i = trenutni; i < tableLenght; i++) {
+					if (table[i] != null) {
+						return true;
+					}
+				}
+			} else if (tableEntry != null && tableEntry.next != null) {
+				return true;
+			}
+
+			else {
+				for (int i = trenutni; i < tableLenght; i++) {
+					if (table[i] != null) {
+						return true;
+					}
+				}
+				return false;
+
+			}
+			return false;
+
+		}
+
+		@Override
+		public Object next() {
+
+			if (tableEntry == null) {
+				for (int i = this.trenutni; i < tableLenght; i++) {
+					if (table[i] != null) {
+						this.tableEntry = table[i];
+						this.trenutni = i + 1;
+						break;
+					}
+
+				}
+				return tableEntry;
+			}
+
+			else if (tableEntry.next != null) {
+				tableEntry=tableEntry.next;
+				return tableEntry;
+			}
+
+			else {
+
+				for (int i = this.trenutni; i < tableLenght; i++) {
+
+					if (table[i] != null) {
+						this.tableEntry = table[i];
+						this.trenutni = i + 1;
+						return this.tableEntry;
+
+					}
+
+				}
+
+				return null;
+			}
+
+		}
+	}
+
+	@Override
+	public Iterator iterator() {
+		return new MyIterator();
+	}
+
 }
-
-

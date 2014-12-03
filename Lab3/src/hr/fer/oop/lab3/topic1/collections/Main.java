@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// create collection:
-		SimpleHashtable examMarks = new SimpleHashtable(4);
+		SimpleHashtable examMarks = new SimpleHashtable(2);
 		// fill data:
 		examMarks.put("Ivana", Integer.valueOf(2));
 		examMarks.put("Ante", Integer.valueOf(2));
@@ -12,6 +12,12 @@ public class Main {
 		examMarks.put("Kristina", Integer.valueOf(5));
 		examMarks.put("Ivana", Integer.valueOf(5)); // overwrites old grade for
 													// Ivana
+
+		for (Object entry : examMarks) {
+			SimpleHashtable.TableEntry pair = (SimpleHashtable.TableEntry) entry;
+			System.out.printf("%s => %s%n", pair.getKey(), pair.getValue());
+		}
+		/*
 		// query collection:
 		String stanje = examMarks.toString();
 		System.out.println(stanje);
@@ -47,7 +53,7 @@ public class Main {
 
 		boolean isempty = examMarks.isEmpty();
 
-		System.out.println("prazan = " + isempty);
+		System.out.println("prazan = " + isempty);*/
 	}
 
 }
