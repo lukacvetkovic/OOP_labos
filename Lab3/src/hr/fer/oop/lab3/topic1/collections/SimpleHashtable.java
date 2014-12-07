@@ -120,7 +120,7 @@ public class SimpleHashtable implements Iterable {
 	 * @return value of the object where key is equal to key in parameter.
 	 */
 	public Object get(Object key) {
-		Object pom=null;
+		Object pom = null;
 		int whereTo = Math.abs((key.hashCode())) % tableLenght;
 
 		if (table[whereTo].getKey().equals(key)) {
@@ -420,6 +420,12 @@ public class SimpleHashtable implements Iterable {
 		}
 	}
 
+	/**
+	 * Class that mimics Iterator on table entry.
+	 * 
+	 * @author Luka Cvetkoviæ
+	 *
+	 */
 	private class MyIterator implements Iterator {
 
 		private TableEntry tableEntry;
@@ -430,6 +436,9 @@ public class SimpleHashtable implements Iterable {
 			this.trenutni = 0;
 		}
 
+		/**
+		 * Method that checks if there is next entry in table.
+		 */
 		@Override
 		public boolean hasNext() {
 			if (tableEntry == null) {
@@ -455,6 +464,9 @@ public class SimpleHashtable implements Iterable {
 
 		}
 
+		/**
+		 * Method that returns next entry from tableEntry.
+		 */
 		@Override
 		public Object next() {
 
@@ -471,7 +483,7 @@ public class SimpleHashtable implements Iterable {
 			}
 
 			else if (tableEntry.next != null) {
-				tableEntry=tableEntry.next;
+				tableEntry = tableEntry.next;
 				return tableEntry;
 			}
 
@@ -494,6 +506,9 @@ public class SimpleHashtable implements Iterable {
 		}
 	}
 
+	/**
+	 * Method that returns iterator.
+	 */
 	@Override
 	public Iterator iterator() {
 		return new MyIterator();

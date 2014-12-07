@@ -9,6 +9,12 @@ import java.io.Reader;
 
 import hr.fer.oop.lab3.topic1.collections.SimpleHashtable;
 
+/**
+ * Class that makes shell.
+ * 
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class MyShell {
 
 	private static SimpleHashtable commands;
@@ -21,6 +27,12 @@ public class MyShell {
 		}
 	}
 
+	/**
+	 * Class that implements current environment.
+	 * 
+	 * @author Cveki
+	 *
+	 */
 	public static class EnvironmentImpl implements Environment {
 
 		private SimpleHashtable terminals;
@@ -30,17 +42,26 @@ public class MyShell {
 		private BufferedWriter writer = new BufferedWriter(
 				new OutputStreamWriter(System.out));
 
+		/**
+		 * Constructor for EnvironmentImpl.
+		 */
 		public EnvironmentImpl() {
 			this.activeTerminal = new Terminal(1);
 			this.terminals = new SimpleHashtable();
 			terminals.put(1, activeTerminal);
 		}
 
+		/**
+		 * Reads line from shell.
+		 */
 		@Override
 		public String readLine() throws IOException {
 			return reader.readLine();
 		}
 
+		/**
+		 * Writes to shell.
+		 */
 		@Override
 		public void write(String s) throws IOException {
 
@@ -48,6 +69,9 @@ public class MyShell {
 			writer.flush();
 		}
 
+		/**
+		 * Writes line to shell.
+		 */
 		@Override
 		public void writeln(String s) throws IOException {
 			writer.write(s + "\n");
@@ -55,18 +79,35 @@ public class MyShell {
 
 		}
 
+		/**
+		 * Getter for activeTerminal.
+		 * 
+		 * @return activeTerminal which is terminal that is currently set.
+		 */
 		@Override
 		public Terminal getActiveTerminal() {
 
 			return activeTerminal;
 		}
 
+		/**
+		 * Setter for activeTerminal
+		 * 
+		 * @param Terminal
+		 *            t is terminal to which we want to set terminal to.
+		 */
 		@Override
 		public void setActiveTerminal(Terminal t) {
 			this.activeTerminal = t;
 
 		}
 
+		/**
+		 * Get terminal from parameter i, if there is no terminal i than makes
+		 * new terminal with parameter i.
+		 * 
+		 * @param int i is number of the terminal.
+		 */
 		@Override
 		public Terminal getOrCreateTerminal(int i) {
 			if (terminals.containsKey(i)) {
@@ -81,6 +122,11 @@ public class MyShell {
 
 		}
 
+		/**
+		 * Returns list of all active terminals.
+		 * 
+		 * @return Terminal[] list of all active terminals.
+		 */
 		@Override
 		public Terminal[] listTerminals() {
 			Terminal[] list = new Terminal[terminals.size];
@@ -94,6 +140,9 @@ public class MyShell {
 			return list;
 		}
 
+		/**
+		 * Iterator for commands.
+		 */
 		@Override
 		public Iterable commands() {
 			return commands;
@@ -101,8 +150,19 @@ public class MyShell {
 
 	}
 
+	/**
+	 * Static class that runs the shell. Class where pogram starts.
+	 */
 	private static Environment environment = new EnvironmentImpl();
 
+	/**
+	 * Method that starts running shell.
+	 * 
+	 * @param args
+	 *            is no used.
+	 * @throws IOException
+	 *             in input of parameters.
+	 */
 	public static void main(String[] args) throws IOException {
 		environment.writeln("Welcome to MyShell! You may enter commands.");
 
