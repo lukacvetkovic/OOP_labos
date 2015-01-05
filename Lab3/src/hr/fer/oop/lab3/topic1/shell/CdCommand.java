@@ -1,5 +1,7 @@
 package hr.fer.oop.lab3.topic1.shell;
 
+import java.io.IOException;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -38,15 +40,35 @@ public class CdCommand extends AbstractCommand {
 				System.out.println("Error");
 				return CommandStatus.CONTINUE;
 			} else {
+				
+				
 				e.getActiveTerminal().setCurrentPath(path);
 				System.out.println("Current directory id now set to: "
 						+ path.toAbsolutePath().normalize().toString());
 			}
 		} else {
 			Path path = Paths.get(pathString);
-			e.getActiveTerminal().setCurrentPath(path);
+			System.out.println(path);
+			Path real_path=null;
+			try {
+				  real_path = e.getActiveTerminal().getCurrentPath().resolve(path);
+			      
+			      
+			      
+			      Path novi=real_path.toRealPath();
+			      
+			      
+			      
+			      
+			    } catch (IOException e1) {
+			    	System.out.println("Error, no such directory");
+			    	
+					return CommandStatus.CONTINUE;
+			    }
+			
+			e.getActiveTerminal().setCurrentPath(real_path);
 			System.out.println("Current directory id now set to: "
-					+ path.toAbsolutePath().normalize().toString());
+					+ real_path.toAbsolutePath().normalize().toString());
 
 		}
 
