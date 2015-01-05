@@ -21,7 +21,8 @@ public class MyShell {
 	static {
 		commands = new SimpleHashtable();
 		ShellCommand[] cc = { new HelpCommand(), new QuitCommand(),
-				new CdCommand(), new TerminalCommand(), new TypeCommand() };
+				new CdCommand(), new TerminalCommand(), new TypeCommand(),
+				new FilterCommand(), new CopyCommand(), new XcopyCommand() };
 		for (ShellCommand c : cc) {
 			commands.put(c.getCommandName(), c);
 		}
