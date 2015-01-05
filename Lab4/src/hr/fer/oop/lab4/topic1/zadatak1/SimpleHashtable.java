@@ -1,4 +1,4 @@
-package hr.fer.oop.lab3.topic1.collections;
+package hr.fer.oop.lab4.topic1.zadatak1;
 
 import java.util.Iterator;
 
@@ -11,7 +11,7 @@ import java.util.Iterator;
  * @author Luka Cvetkoviæ
  *
  */
-public class SimpleHashtable<K,V> implements Iterable<Object> {
+public class SimpleHashtable<K, V> implements Iterable<SimpleHashtable.TableEntry<K, V>> {
 
 	public int size;
 	public TableEntry[] table;
@@ -64,7 +64,7 @@ public class SimpleHashtable<K,V> implements Iterable<Object> {
 	 *            object to set TableEntery object value.
 	 */
 	public void put(K key, V value) {
-		TableEntry newOne = new TableEntry(key, value, null);
+		TableEntry<K, V> newOne = new TableEntry<K, V>(key, value, null);
 		int whereTo = Math.abs((key.hashCode())) % tableLenght;
 
 		if (table[whereTo] == null) {
@@ -100,7 +100,7 @@ public class SimpleHashtable<K,V> implements Iterable<Object> {
 	 *            is object of TableEntery which we wanna put in table.
 	 */
 	private void setLastNext(TableEntry behind, TableEntry current,
-			TableEntry newOne) {
+			TableEntry<K, V> newOne) {
 		if (current == null) {
 			behind.setNext(newOne);
 		} else if (current.getKey().equals(newOne.getKey())) {
@@ -119,17 +119,17 @@ public class SimpleHashtable<K,V> implements Iterable<Object> {
 	 *            parameter by which we search the table.
 	 * @return value of the object where key is equal to key in parameter.
 	 */
-	public Object get(K key) {
+	public V get(K key) {
 		Object pom = null;
 		int whereTo = Math.abs((key.hashCode())) % tableLenght;
 
 		if (table[whereTo].getKey().equals(key)) {
 
-			return table[whereTo].getValue();
+			return (V) table[whereTo].getValue();
 		} else {
 			pom = searchForKey(table[whereTo].getNext(), key);
 		}
-		return pom;
+		return (V) pom;
 
 	}
 
@@ -142,11 +142,11 @@ public class SimpleHashtable<K,V> implements Iterable<Object> {
 	 *            parameter by which we search the table.
 	 * @return value of the object where key is equal to key in parameter.
 	 */
-	private Object searchForKey(TableEntry current, K key) {
+	private V searchForKey(TableEntry current, K key) {
 		if (current == null) {
 			return null;
 		} else if (current.getKey().equals(key)) {
-			return current.getValue();
+			return (V) current.getValue();
 		} else {
 			return searchForKey(current.getNext(), key);
 		}
@@ -260,7 +260,7 @@ public class SimpleHashtable<K,V> implements Iterable<Object> {
 	 */
 	public void remove(K key) {
 		int whereTo = Math.abs((key.hashCode())) % (table.length);
-		TableEntry temp;
+		TableEntry<K, V> temp;
 
 		if (table[whereTo] == null) {
 			return;
@@ -334,7 +334,7 @@ public class SimpleHashtable<K,V> implements Iterable<Object> {
 	 * @author Luka Cvetkoviæ
 	 *
 	 */
-	public static class TableEntry<K,V> {
+	public static class TableEntry<K, V> {
 		/**
 		 * Value of the key object.
 		 */
@@ -426,7 +426,7 @@ public class SimpleHashtable<K,V> implements Iterable<Object> {
 	 * @author Luka Cvetkoviæ
 	 *
 	 */
-	private class MyIterator implements Iterator {
+	private class MyIterator implements Iterator<TableEntry<K, V>>{
 
 		private TableEntry tableEntry;
 		private int trenutni;
@@ -468,7 +468,7 @@ public class SimpleHashtable<K,V> implements Iterable<Object> {
 		 * Method that returns next entry from tableEntry.
 		 */
 		@Override
-		public Object next() {
+		public TableEntry<K, V> next() {
 
 			if (tableEntry == null) {
 				for (int i = this.trenutni; i < tableLenght; i++) {
@@ -513,5 +513,55 @@ public class SimpleHashtable<K,V> implements Iterable<Object> {
 	public Iterator iterator() {
 		return new MyIterator();
 	}
+
+	public Iterable<V> values() {
+		return new Iterable<V>() {
+
+			@Override
+			public Iterator<V> iterator() {
+				return new Iterator<V>() {
+
+					private MyIterator wrapped = new MyIterator();
+
+					@Override
+					public boolean hasNext() {
+						return wrapped.hasNext();
+					}
+
+					@Override
+					public V next() {
+						return wrapped.next().value;
+					}
+				};
+			}
+		};
+
+	}
+	
+	public Iterable<K> key() {
+		return new Iterable<K>() {
+
+			@Override
+			public Iterator<K> iterator() {
+				return new Iterator<K>() {
+
+					private MyIterator wrapped = new MyIterator();
+
+					@Override
+					public boolean hasNext() {
+						return wrapped.hasNext();
+					}
+
+					@Override
+					public K next() {
+						return wrapped.next().key;
+					}
+				};
+			}
+		};
+
+	}
+	
+	
 
 }
