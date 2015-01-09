@@ -29,22 +29,19 @@ public class DirCommand extends AbstractCommand {
 	@Override
 	public CommandStatus execute(Environment e, String arg) {
 
-
 		String argArray[] = arg.split("/");
 
 		String sort = null;
-		String filter=null;
-		String type=null;
-		Path pathReal=null;
+		String filter = null;
+		String type = null;
+		Path pathReal = null;
 		Path real_path = null;
-		String[] inf=null;
+		String[] inf = null;
 
 		for (String argument : argArray) {
-			
-			String sub=argument.trim().substring(0, 4);
-			
 
-			
+			String sub = argument.trim().substring(0, 4);
+
 			switch (sub) {
 
 			case "sort":
@@ -70,13 +67,12 @@ public class DirCommand extends AbstractCommand {
 					System.out.println("Command error");
 					break;
 				}
-				
+
 				try {
 					real_path = e.getActiveTerminal().getCurrentPath()
 							.resolve(path);
 
 					Path novi = real_path.toRealPath();
-					
 
 				} catch (IOException e1) {
 					System.out.println("Error, no such directory" + argument);
@@ -86,35 +82,35 @@ public class DirCommand extends AbstractCommand {
 
 			}
 		}
-		
-		if(real_path==null){
-			real_path=e.getActiveTerminal().getCurrentPath();
+
+		if (real_path == null) {
+			real_path = e.getActiveTerminal().getCurrentPath();
 		}
 		/**
 		 * Reading file
 		 */
-		
-		File currentDir=real_path.toFile();
-		File[] currentDirFiles= currentDir.listFiles();
-		
-		List<Comparator> sortList= new ArrayList();
-		
-		if(sort!=null){
-			String[] sortArray= sort.split("");
-			
-			for(String label: sortArray){
+
+		File currentDir = real_path.toFile();
+		File[] currentDirFiles = currentDir.listFiles();
+
+		List<Comparator> sortList = new ArrayList();
+
+		if (sort != null) {
+			String[] sortArray = sort.split("");
+
+			for (String label : sortArray) {
 				switch (label) {
 				case "E":
-					sortList.add(new ExtensionComparator(false));					
+					sortList.add(new ExtensionComparator(false));
 					break;
 				case "e":
-					sortList.add(new ExtensionComparator(true));		
+					sortList.add(new ExtensionComparator(true));
 					break;
 				case "S":
-					sortList.add(new SizeComparator(false));		
+					sortList.add(new SizeComparator(false));
 					break;
 				case "s":
-					sortList.add(new SizeComparator(true));	
+					sortList.add(new SizeComparator(true));
 					break;
 				case "D":
 					sortList.add(new DateComparator(false));
@@ -134,51 +130,116 @@ public class DirCommand extends AbstractCommand {
 				case "t":
 					sortList.add(new TypeComparator(true));
 					break;
-	
 
 				}
 			}
-			
-		}
-		
-		PriorityQueue<File> priorityQueue = new PriorityQueue<File>(currentDirFiles.length,new ChainedComparator(sortList));
 
-		
-		for(File file: currentDirFiles){
-			
-			System.out.println(type);
-			
-			if(type.equals("f")){
-				if(file.isFile()){
+		}
+
+		PriorityQueue<File> priorityQueue = new PriorityQueue<File>(
+				currentDirFiles.length, new ChainedComparator(sortList));
+
+		List<File> ret = new ArrayList<File>();
+		if (filter != null) {
+			ret = validFiles(currentDir, filter);
+		}
+		else{
+			ret = validFiles(currentDir, "");
+		}
+
+		for (File file : currentDirFiles) {
+
+			if (type.equals("f")) {
+				if (file.isFile() && ret.contains(file)) {
+					System.out.println("Dodajem : " + file.getName());
 					priorityQueue.add(file);
-					
-				}
-				else{
+
+				} else {
 					continue;
 				}
-			}
-			else if (type.equals("d")){
-				if(file.isDirectory()){
+			} else if (type.equals("d") && ret.contains(file)) {
+				if (file.isDirectory()) {
+					System.out.println("Dodajem : " + file.getName());
 					priorityQueue.add(file);
-					
-				}
-				else {
+
+				} else {
 					continue;
 				}
-			}
-			else{
-				priorityQueue.add(file);
-			}
-			
+			} else {
+				if (ret.contains(file.getName())) {
+					System.out.println("Dodajem : " + file.getName());
+					priorityQueue.add(file);
+				}
 
-			
+			}
+
 		}
-		
-		 while (priorityQueue.size() != 0)
-	        {
-	            System.out.println(priorityQueue.remove().length());
-	        }
+
+		while (priorityQueue.size() != 0) {
+			System.out.println(priorityQueue.remove());
+		}
 
 		return CommandStatus.CONTINUE;
 	}
+
+	private List<File> validFiles(File root, String s) {
+		List<File> ret = new ArrayList<File>();
+		if (root.listFiles() != null) {
+			for (File ff : root.listFiles()) {
+
+				String name = ff.getName();
+				if (s.contains("*")) {
+					if (s.startsWith("*")) {
+						String ending = s.split("\\*")[1];
+						if (ending.length() <= name.length()) {
+							String last = name.substring(name.length()
+									- ending.length());
+							if (last.equalsIgnoreCase(ending)) {
+								System.out.println("Dodajem : "
+										+ ff.getName());
+								ret.add(ff);
+							}
+						}
+					} else if (s.endsWith("*")) {
+						String beggining = s.split("\\*")[0];
+						if (beggining.length() <= name.length()) {
+							String first = name
+									.substring(0, beggining.length());
+							if (first.equalsIgnoreCase(beggining)) {
+								System.out.println("Dodajem : "
+										+ ff.getName());
+								ret.add(ff);
+							}
+						}
+					} else {
+						String beggining = s.split("\\*")[0];
+						String ending = s.split("\\*")[1];
+						if (beggining.length() <= name.length()
+								&& ending.length() <= name.length()) {
+							String first = name
+									.substring(0, beggining.length());
+							String last = name.substring(name.length()
+									- ending.length());
+							if (first.equalsIgnoreCase(beggining)
+									&& last.equalsIgnoreCase(ending)) {
+								System.out.println("Dodajem : "
+										+ ff.getName());
+								ret.add(ff);
+							}
+						}
+					}
+				} else {
+					if (name.equalsIgnoreCase(s)) {
+						System.out.println("Dodajem : "
+								+ ff.getName());
+						ret.add(ff);
+					}
+				}
+
+			}
+		}
+
+		return ret;
+	}
+
 }

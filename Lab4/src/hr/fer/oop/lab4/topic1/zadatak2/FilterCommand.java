@@ -14,11 +14,12 @@ public class FilterCommand extends AbstractCommand{
 
 	@Override
 	public CommandStatus execute(Environment e, String s) {
+		System.out.println(s);
 		List<String> ret = validFiles(new File(e.getActiveTerminal()
 				.getCurrentPath().toString()), s);
 		for (String name : ret) {
 			try {
-				e.writeln(name);
+				System.out.println(name);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
