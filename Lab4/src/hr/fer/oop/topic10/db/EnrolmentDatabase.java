@@ -19,6 +19,17 @@ public class EnrolmentDatabase {
 		}
 
 	}
+	
+	
+
+	/**
+	 * @return the dataBase
+	 */
+	public Map<String, EnrolmentRecord> getDataBase() {
+		return dataBase;
+	}
+
+
 
 	private void addToDatabase(String[] rowSplit) {
 		dataBase.put(rowSplit[0] + rowSplit[1], new EnrolmentRecord(

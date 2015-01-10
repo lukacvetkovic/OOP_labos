@@ -19,6 +19,15 @@ public class CourseDatabase {
 		}
 
 	}
+	
+
+	/**
+	 * @return the dataBase
+	 */
+	public Map<String, CourseRecord> getDataBase() {
+		return dataBase;
+	}
+
 
 	private void addToDatabase(String[] rowSplit) {
 		dataBase.put(rowSplit[0], new CourseRecord(rowSplit[0], rowSplit[1]));

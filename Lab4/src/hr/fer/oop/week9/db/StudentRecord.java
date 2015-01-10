@@ -60,5 +60,9 @@ public class StudentRecord {
 	public void setFinalGrade(String finalGrade) {
 		this.finalGrade = finalGrade;
 	}
+	
+	public String toString(){
+	      return this.firstName+" "+this.lastName;
+	  }
 
 }

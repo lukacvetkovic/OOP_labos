@@ -15,6 +15,13 @@ public class StudentDatabase {
 
 	private Map<String, StudentRecord> dataBase = new LinkedHashMap<>();
 
+	/**
+	 * @return the dataBase
+	 */
+	public Map<String, StudentRecord> getDataBase() {
+		return dataBase;
+	}
+
 	public StudentDatabase(List<String> rows) {
 
 		for (String row : rows) {
