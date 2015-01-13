@@ -4,7 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+/**
+ * Class that copy one file to other location
+ * @author Cveki
+ *
+ */
 public class CopyCommand extends AbstractCommand {
 
 	/**
@@ -15,7 +19,7 @@ public class CopyCommand extends AbstractCommand {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Execute function to make magic happen.
 	 */
 	@Override
 	public CommandStatus execute(Environment e, String s) {

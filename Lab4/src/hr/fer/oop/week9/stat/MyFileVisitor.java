@@ -8,6 +8,12 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * File visitor which takes count,size and maps of extensions and first letters.
+ * 
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class MyFileVisitor implements FileVisitor<Path> {
 
 	public Map<String, Extension> extensionMap;
@@ -56,7 +62,8 @@ public class MyFileVisitor implements FileVisitor<Path> {
 			extensionMap.get(extension).count++;
 			extensionMap.get(extension).size += file.toFile().length();
 		} else {
-			extensionMap.put(extension, new Extension(extension,file.toFile().length()));
+			extensionMap.put(extension, new Extension(extension, file.toFile()
+					.length()));
 		}
 
 		String firstLetter = file.toFile().getName().substring(0, 1);
@@ -65,8 +72,8 @@ public class MyFileVisitor implements FileVisitor<Path> {
 			firstLetterMap.get(firstLetter).count++;
 			firstLetterMap.get(firstLetter).size += file.toFile().length();
 		} else {
-			firstLetterMap.put(firstLetter, new FirstLetter(firstLetter,file.toFile()
-					.length()));
+			firstLetterMap.put(firstLetter, new FirstLetter(firstLetter, file
+					.toFile().length()));
 		}
 
 		return FileVisitResult.CONTINUE;

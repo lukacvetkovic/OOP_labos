@@ -1,5 +1,9 @@
 package hr.fer.oop.lab4.topic1.zadatak1;
-
+/**
+ * Class where program for testing SimpleHashtable starts.
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {

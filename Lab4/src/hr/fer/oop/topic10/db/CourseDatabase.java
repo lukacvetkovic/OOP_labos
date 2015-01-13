@@ -7,6 +7,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class which contains map with CourseRecord-s fillled with courses from .txt file.
+ * @author Cveki
+ *
+ */
 public class CourseDatabase {
 
 	private Map<String, CourseRecord> dataBase = new LinkedHashMap<>();
@@ -22,18 +27,28 @@ public class CourseDatabase {
 	
 
 	/**
+	 * Getter for dataBase
 	 * @return the dataBase
 	 */
 	public Map<String, CourseRecord> getDataBase() {
 		return dataBase;
 	}
 
-
+	/**
+	 * Private method that helps us put CourseRecords to database.
+	 * @param rowSplit
+	 */
 	private void addToDatabase(String[] rowSplit) {
 		dataBase.put(rowSplit[0], new CourseRecord(rowSplit[0], rowSplit[1]));
 
 	}
-
+	/**
+	 * Filter that returns CourseRecord with specific id.
+	 * 
+	 * @param courseId the id of the Course.
+	 * 
+	 * @return 
+	 */
 	public CourseRecord findById(String courseId) {
 		for (Map.Entry<String, CourseRecord> entry : dataBase.entrySet()) {
 			String key = entry.getKey();
@@ -43,7 +58,11 @@ public class CourseDatabase {
 		}
 		return null;
 	}
-
+	/**
+	 * Returns first CourseRecord that starts with string s.
+	 * @param s string parameter which CourseRecord start with.
+	 * @return CourseRecord which start with String s or null if not found.
+	 */
 	public CourseRecord findFirstByName(String s) {
 
 		for (Map.Entry<String, CourseRecord> entry : dataBase.entrySet()) {

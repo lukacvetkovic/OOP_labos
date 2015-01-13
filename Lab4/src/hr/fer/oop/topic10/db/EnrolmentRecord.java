@@ -1,6 +1,11 @@
 package hr.fer.oop.topic10.db;
 
-
+/**
+ * Container for enromlent.
+ * 
+ * @author Luka Cvetkoviæ.
+ *
+ */
 public class EnrolmentRecord {
 
 	private String courseId;
@@ -8,6 +13,8 @@ public class EnrolmentRecord {
 	private String grade;
 
 	/**
+	 * Constructor for EnromentRecord.
+	 * 
 	 * @param courseId
 	 * @param studentJMBAG
 	 * @param grade
@@ -19,6 +26,11 @@ public class EnrolmentRecord {
 		this.grade = grade;
 	}
 
+	/**
+	 * Method that returns hashCode of enrmolment.
+	 * 
+	 * @return int HashCode of enrolment.
+	 */
 	public int hashCode() {
 		return (this.courseId + this.studentJMBAG).hashCode();
 	}
@@ -36,6 +48,8 @@ public class EnrolmentRecord {
 	}
 
 	/**
+	 * Getter for courseId.
+	 * 
 	 * @return the courseId
 	 */
 	public String getCourseId() {
@@ -43,6 +57,8 @@ public class EnrolmentRecord {
 	}
 
 	/**
+	 * Setter for courseId.
+	 * 
 	 * @param courseId
 	 *            the courseId to set
 	 */
@@ -51,6 +67,8 @@ public class EnrolmentRecord {
 	}
 
 	/**
+	 * Getter for JMBAG.
+	 * 
 	 * @return the studentJMBAG
 	 */
 	public String getStudentJMBAG() {
@@ -58,6 +76,8 @@ public class EnrolmentRecord {
 	}
 
 	/**
+	 * Setter for JMBAG.
+	 * 
 	 * @param studentJMBAG
 	 *            the studentJMBAG to set
 	 */
@@ -66,6 +86,8 @@ public class EnrolmentRecord {
 	}
 
 	/**
+	 * Getter for grade.
+	 * 
 	 * @return the grade
 	 */
 	public String getGrade() {
@@ -73,6 +95,8 @@ public class EnrolmentRecord {
 	}
 
 	/**
+	 * Setter for grade.
+	 * 
 	 * @param grade
 	 *            the grade to set
 	 */

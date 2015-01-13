@@ -12,8 +12,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * Class that anylize the files and searches for extensions , first letters,
+ * size and counts the files.
+ * 
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class Anylizer {
-
+	/**
+	 * This is where program starts.
+	 * 
+	 * @param args
+	 *            are used for path to file.
+	 * @throws IOException
+	 *             when there is no file.
+	 */
 	public static void main(String[] args) throws IOException {
 
 		Path path = null;
@@ -24,7 +38,6 @@ public class Anylizer {
 		} else {
 			System.out.println("No parameter");
 		}
-
 
 		try {
 
@@ -37,43 +50,46 @@ public class Anylizer {
 
 		MyFileVisitor visitor = new MyFileVisitor();
 
+		Files.walkFileTree(path, visitor);
 
-	    Files.walkFileTree(path,visitor);		
-		
-	    List<Extension> sortedListExtension=new ArrayList<Extension>();
-	    List<FirstLetter> sortedFirstLetterList=new ArrayList<FirstLetter>();
-				
+		List<Extension> sortedListExtension = new ArrayList<Extension>();
+		List<FirstLetter> sortedFirstLetterList = new ArrayList<FirstLetter>();
 
 		for (Entry<String, Extension> entry : visitor.extensionMap.entrySet()) {
 			sortedListExtension.add(entry.getValue());
 		}
-		
-		for (Entry<String, FirstLetter> entry : visitor.firstLetterMap.entrySet()) {
+
+		for (Entry<String, FirstLetter> entry : visitor.firstLetterMap
+				.entrySet()) {
 			sortedFirstLetterList.add(entry.getValue());
 
 		}
-		
-		List<Comparator<Extension>> simpleComparators= new ArrayList<Comparator<Extension>>();
+
+		List<Comparator<Extension>> simpleComparators = new ArrayList<Comparator<Extension>>();
 		simpleComparators.add(new ExtensionCountComparator(false));
 		simpleComparators.add(new ExtensionNameComparator(true));
-		
+
 		sortedListExtension.sort(new ChainedComparator(simpleComparators));
-		
+
 		sortedFirstLetterList.sort(new FirstLetterNameComparator(true));
-		
-		System.out.println("EKSTENZIJE: ------------------------------------------");
-		for(Extension extension : sortedListExtension){
-			System.out.println(extension.name+"\t"+extension.count+"\t"+extension.size);
+
+		System.out
+				.println("EKSTENZIJE: ------------------------------------------");
+		for (Extension extension : sortedListExtension) {
+			System.out.println(extension.name + "\t" + extension.count + "\t"
+					+ extension.size);
 		}
-		
-		System.out.println("\nPOCETNA SLOVA:-----------------------------------------");
-		for(FirstLetter firstLetter:sortedFirstLetterList){
-			System.out.println(firstLetter.letter+"\t"+firstLetter.count+"\t"+firstLetter.size);
+
+		System.out
+				.println("\nPOCETNA SLOVA:-----------------------------------------");
+		for (FirstLetter firstLetter : sortedFirstLetterList) {
+			System.out.println(firstLetter.letter + "\t" + firstLetter.count
+					+ "\t" + firstLetter.size);
 		}
-		
-		System.out.println("\nUkupno je pronaðeno : "+ visitor.counter+" datoteka");
-		System.out.println("\nUkupna velièina je : "+ visitor.sizeAll+" b");
-		
+
+		System.out.println("\nUkupno je pronaðeno : " + visitor.counter
+				+ " datoteka");
+		System.out.println("\nUkupna velièina je : " + visitor.sizeAll + " b");
 
 	}
 

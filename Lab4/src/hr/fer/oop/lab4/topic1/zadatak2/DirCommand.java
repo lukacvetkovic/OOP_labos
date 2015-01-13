@@ -1,6 +1,7 @@
 package hr.fer.oop.lab4.topic1.zadatak2;
 
 import hr.fer.oop.lab4.topic1.zadatak2.Comparators.ChainedComparator;
+
 import hr.fer.oop.lab4.topic1.zadatak2.Comparators.DateComparator;
 import hr.fer.oop.lab4.topic1.zadatak2.Comparators.ExtensionComparator;
 import hr.fer.oop.lab4.topic1.zadatak2.Comparators.NameComparator;
@@ -19,13 +20,29 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+/**
+ * 
+ * Command that prints file names in specific dir in some orded which is
+ * specified as parameter to execute method.
+ * 
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class DirCommand extends AbstractCommand {
 
 	public DirCommand() {
 		super("DIR", "Prints the file names");
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * Method that executes printing the directory names.
+	 * 
+	 * @param e
+	 *            is environment of the command.
+	 * @param s
+	 *            is destination folder.
+	 * @return CommandStatus enum which tells us if we should continue or exit.
+	 */
 	@Override
 	public CommandStatus execute(Environment e, String arg) {
 
@@ -142,8 +159,7 @@ public class DirCommand extends AbstractCommand {
 		List<File> ret = new ArrayList<File>();
 		if (filter != null) {
 			ret = validFiles(currentDir, filter);
-		}
-		else{
+		} else {
 			ret = validFiles(currentDir, "");
 		}
 
@@ -195,8 +211,7 @@ public class DirCommand extends AbstractCommand {
 							String last = name.substring(name.length()
 									- ending.length());
 							if (last.equalsIgnoreCase(ending)) {
-								System.out.println("Dodajem : "
-										+ ff.getName());
+								System.out.println("Dodajem : " + ff.getName());
 								ret.add(ff);
 							}
 						}
@@ -206,8 +221,7 @@ public class DirCommand extends AbstractCommand {
 							String first = name
 									.substring(0, beggining.length());
 							if (first.equalsIgnoreCase(beggining)) {
-								System.out.println("Dodajem : "
-										+ ff.getName());
+								System.out.println("Dodajem : " + ff.getName());
 								ret.add(ff);
 							}
 						}
@@ -222,16 +236,14 @@ public class DirCommand extends AbstractCommand {
 									- ending.length());
 							if (first.equalsIgnoreCase(beggining)
 									&& last.equalsIgnoreCase(ending)) {
-								System.out.println("Dodajem : "
-										+ ff.getName());
+								System.out.println("Dodajem : " + ff.getName());
 								ret.add(ff);
 							}
 						}
 					}
 				} else {
 					if (name.equalsIgnoreCase(s)) {
-						System.out.println("Dodajem : "
-								+ ff.getName());
+						System.out.println("Dodajem : " + ff.getName());
 						ret.add(ff);
 					}
 				}

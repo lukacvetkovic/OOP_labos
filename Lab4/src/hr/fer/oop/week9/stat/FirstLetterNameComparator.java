@@ -2,6 +2,12 @@ package hr.fer.oop.week9.stat;
 
 import java.util.Comparator;
 
+/**
+ * Comparator for First letter of file.
+ * 
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class FirstLetterNameComparator implements Comparator<FirstLetter> {
 
 	private boolean ascDesc;
@@ -18,12 +24,14 @@ public class FirstLetterNameComparator implements Comparator<FirstLetter> {
 
 		// TRUE je rastuca
 		if (ascDesc) {
-			comparison = o1.letter.toLowerCase().compareTo(o2.letter.toLowerCase());
+			comparison = o1.letter.toLowerCase().compareTo(
+					o2.letter.toLowerCase());
 			if (comparison != 0)
 				return comparison;
 
 		} else {
-			comparison = o2.letter.toLowerCase().compareTo(o1.letter.toLowerCase());
+			comparison = o2.letter.toLowerCase().compareTo(
+					o1.letter.toLowerCase());
 			if (comparison != 0)
 				return comparison;
 		}

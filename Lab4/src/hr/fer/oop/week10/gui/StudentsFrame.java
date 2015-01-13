@@ -1,6 +1,7 @@
 package hr.fer.oop.week10.gui;
 
 import hr.fer.oop.topic10.db.CourseRecord;
+
 import hr.fer.oop.topic10.db.Database;
 import hr.fer.oop.topic10.db.EnrolmentRecord;
 import hr.fer.oop.week9.db.StudentRecord;
@@ -33,6 +34,12 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLayeredPane;
 
+/**
+ * Class that make graphic representation of databases.
+ * 
+ * @author Luka Cvetkoviæ
+ *
+ */
 public class StudentsFrame extends JFrame {
 
 	private Database database;
@@ -48,14 +55,18 @@ public class StudentsFrame extends JFrame {
 
 	/**
 	 * Launch the application.
-	 * @throws UnsupportedLookAndFeelException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @throws ClassNotFoundException 
+	 * 
+	 * @throws UnsupportedLookAndFeelException
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 * @throws ClassNotFoundException
 	 */
-	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		
-		UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+	public static void main(String[] args) throws ClassNotFoundException,
+			InstantiationException, IllegalAccessException,
+			UnsupportedLookAndFeelException {
+
+		UIManager.setLookAndFeel(UIManager
+				.getCrossPlatformLookAndFeelClassName());
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -96,8 +107,6 @@ public class StudentsFrame extends JFrame {
 		}
 
 		comboBox.addActionListener(new ActionListener() {
-			
-			
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -113,40 +122,39 @@ public class StudentsFrame extends JFrame {
 				jmbagVar.setText(rec.getJmbag());
 
 				studenJPanel.invalidate();
-				
+
 				courseJPanel.removeAll();
-				
+
 				StudentRecord currentRecord = (StudentRecord) comboBox
 						.getSelectedItem();
-				
+
 				for (EnrolmentRecord record : database.getEnrolmentDatabase()
 						.findByStudent(currentRecord.getJmbag())) {
-					
 
 					for (Map.Entry<String, CourseRecord> entry : (database
 							.getCourseDatabase().getDataBase()).entrySet()) {
-						
+
 						CourseRecord courseRecord = entry.getValue();
-						if (record.getCourseId().equals(courseRecord.getCourseId())) {
-							Button button= new Button(courseRecord.getCourseName());
+						if (record.getCourseId().equals(
+								courseRecord.getCourseId())) {
+							Button button = new Button(courseRecord
+									.getCourseName());
 							button.addActionListener(new ActionListener() {
-								
+
 								@Override
 								public void actionPerformed(ActionEvent e) {
-									JOptionPane.showMessageDialog(courseJPanel,record.getGrade());
-									
+									JOptionPane.showMessageDialog(courseJPanel,
+											record.getGrade());
+
 								}
 							});
 							courseJPanel.add(button);
 
-							
 						}
 					}
 				}
-				
+
 				courseJPanel.validate();
-				
-				
 
 			}
 		});
@@ -211,36 +219,35 @@ public class StudentsFrame extends JFrame {
 
 		innterJPanel.add(courseJPanel, BorderLayout.CENTER);
 
-		BoxLayout boxLayout = new BoxLayout(courseJPanel,BoxLayout.Y_AXIS);
+		BoxLayout boxLayout = new BoxLayout(courseJPanel, BoxLayout.Y_AXIS);
 		courseJPanel.setBorder(BorderFactory
 				.createTitledBorder("Upisani predmeti "));
 
-		courseJPanel.setLayout(boxLayout);	
+		courseJPanel.setLayout(boxLayout);
 
 		StudentRecord currentRecord = (StudentRecord) comboBox
 				.getSelectedItem();
-		
+
 		for (EnrolmentRecord record : database.getEnrolmentDatabase()
 				.findByStudent(currentRecord.getJmbag())) {
-			
 
 			for (Map.Entry<String, CourseRecord> entry : (database
 					.getCourseDatabase().getDataBase()).entrySet()) {
-				
+
 				CourseRecord courseRecord = entry.getValue();
 				if (record.getCourseId().equals(courseRecord.getCourseId())) {
-					Button button= new Button(courseRecord.getCourseName());
+					Button button = new Button(courseRecord.getCourseName());
 					button.addActionListener(new ActionListener() {
-						
+
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							JOptionPane.showMessageDialog(courseJPanel,record.getGrade());
-							
+							JOptionPane.showMessageDialog(courseJPanel,
+									record.getGrade());
+
 						}
 					});
 					courseJPanel.add(button);
 
-					
 				}
 			}
 		}
